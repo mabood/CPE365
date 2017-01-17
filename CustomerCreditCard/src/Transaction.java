@@ -1,16 +1,16 @@
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- * @Author Mike G. Abood
+/** Transaction
+ * @author Mike G. Abood
  * CPE 365 Winter 17
+ *
+ * Attributes: date, customer id, cc number, and vendor id.
+ * Contains information that a customer purchased something with a credit card.
+ * Example: On January 5th, 2015, customer with id 255 used CC with credit card number 2342343432 at vendor id 233
+ * for $654.23 worth of purchases.
  */
 
-/*
-Contains information that a customer purchased something with a credit card.
-Example: On January 5th, 2015, customer with id 255 used CC with credit card number 2342343432 at vendor id 233 for $654.23 worth of purchases.
-Store all information: date, customer id, cc number, and vender id.
- */
 public class Transaction implements Comparable<Transaction>{
     private Date transactTime;
     private Customer customer;

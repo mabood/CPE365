@@ -1,14 +1,12 @@
-/**
- * @Author Mike G. Abood
+/** Vendor
+ * @author Mike G. Abood
  * CPE 365 Winter 17
+ *
+ * Attributes: id, name, location of main office.
+ * Example: vendor with id 23 has name “Best Buy” and main office location “123 Main St., Austin, TX”.
+ * The id of the vender is unique and assigned by the system.
  */
-/*
 
-id, name, location of main office.
-Example: vendor with id 23 has name “Best Buy” and main office location “123 Main St., Austin, TX”.
-The id of the vender is unique and assigned by the system.
-
- */
 public class Vendor {
     private static int vendorIdCount = 1;
     private int vendorId;
@@ -51,6 +49,10 @@ public class Vendor {
         return address;
     }
 
+    /** printableVendorInfo returns relevant info as String
+     *
+     * @return String formatted summary of Vendor info
+     */
     public String printableVendorInfo() {
         String info = "Vendor Id:\t" + vendorId;
         info += "\nName:\t\t" + vendorName;

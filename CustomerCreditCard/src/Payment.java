@@ -1,16 +1,14 @@
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- * @Author Mike G. Abood
+/** Payment
+ * @author Mike G. Abood
  * CPE 365 Winter 17
+ *
+ * Contains information that a payment was made on the balance of a credit card.
+ * For example, on June 2, 2015, $400.34 was payed on credit card 23424123432.
  */
 
-/*
-
-Contains information that a payment was made on the balance of a credit card.
-For example, on June 2, 2015, $400.34 was payed on credit card 23424123432.
- */
 public class Payment implements Comparable<Payment>{
     private Date paymentTime;
     private BigDecimal amount;

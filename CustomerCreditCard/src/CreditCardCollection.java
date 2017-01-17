@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.NoSuchElementException;
 
 /** CreditCardCollection class for data structure holding CreditCard objects
- * @Author Mike G. Abood
+ * @author Mike G. Abood
  * CPE 365 Winter 17
  */
 public class CreditCardCollection {
@@ -12,7 +12,7 @@ public class CreditCardCollection {
      *  initializes creditCards collection
      */
     public CreditCardCollection() {
-        creditCards = new HashMap<String, CreditCard>();
+        creditCards = new HashMap<>();
     }
 
     /** addCreditCard add CreditCard object to collection

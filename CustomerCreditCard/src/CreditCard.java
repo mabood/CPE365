@@ -1,19 +1,17 @@
 import java.math.*;
 import java.util.*;
 
-/**
- * @Author Mike G. Abood
+/** CreditCard class defines the attributes and use of CreditCard objects
+ * @author Mike G. Abood
  * CPE 365 Winter 17
+ *
+ * Attributes: number, type (enum value, can be Visa, MC, American Express, or Discover), credit limit, current balance
+ * (must be less than the credit limit).
+ * For example, credit card with number 2432143232 is Visa, credit limit of $10,000 and current balance of $3444.23.
+ * The credit card number is unique. You cannot have two credit cards with the same number.
+ * Add an additional bit that represents if the credit card is active. Credit cards are initially inactive.
  */
 
-/*
-
-number, type (enum value, can be Visa, MC, American Express, or Discover), credit limit, current balance (must be less than the credit limit).
-For example, credit card with number 2432143232 is Visa, credit limit of $10,000 and current balance of $3444.23.
-The credit card number is unique. You cannot have two credit cards with the same number.
-Add an additional bit that represents if the credit card is active. Credit cards are initially inactive.
-
- */
 public class CreditCard {
     public enum CardType {
         AMEX, DISCOVER, MC, VISA;
@@ -38,16 +36,16 @@ public class CreditCard {
      * @param creditLimit integer for CreditCard limit
      */
     public CreditCard(CardType cardType, int creditLimit) {
-        cardsCreated = new HashSet<String>();
-        this.cardHolders = new ArrayList<Customer>();
+        cardsCreated = new HashSet<>();
+        this.cardHolders = new ArrayList<>();
         this.type = cardType;
         this.creditLimit = creditLimit;
         this.cardNumber = createUniqueCard();
         this.activeStatus = false;
         this.balance = new BigDecimal(0);
 
-        transactions = new TreeMap<Date, Transaction>();
-        payments = new TreeMap<Date, Payment>();
+        transactions = new TreeMap<>();
+        payments = new TreeMap<>();
     }
 
     /** generateCardNumber generate random CreditCard number

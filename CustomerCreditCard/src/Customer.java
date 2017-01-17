@@ -1,19 +1,15 @@
 import java.util.ArrayList;
 
-/**
- * @Author Mike G. Abood
+/** Customer class
+ *
+ * @author Mike G. Abood
  * CPE 365 Winter 17
+ *
+ * Attributes: SSN, id, name, address, phone number.
+ * Example: John Smith with SSN 2342342341 and id 45 lives on 123 Main Street and has phone number 234241423.
+ * SSN is of course unique. The value of id is also unique and is automatically assigned by the system
  */
 
-/*
-: SSN, id, name, address, phone number.
-Example: John Smith with SSN 2342342341 and id 45 lives on 123 Main Street and has phone number 234241423.
-SSN is of course unique. The value of id is also unique and is automatically assigned by the system
-(e.g., use a static variable that increments by one to assign it).
-
-
-
- */
 public class Customer {
     static int idCounter = 1;
     private long ssn;
@@ -37,7 +33,7 @@ public class Customer {
         this.phone = phone;
         this.id = idCounter;
         idCounter++;
-        this.customerCards = new ArrayList<CreditCard>();
+        this.customerCards = new ArrayList<>();
     }
 
     /** getCustomerId return unique ID for Customer
@@ -80,12 +76,21 @@ public class Customer {
         return phone;
     }
 
+    /** addCustomerCard add a CreditCard to this Customer
+     *
+     * @param card card to add
+     */
     public void addCustomerCard(CreditCard card) {
         if (!this.customerCards.contains(card)) {
             this.customerCards.add(card);
         }
     }
 
+    /** removeCustomerCard remove card from this customer
+     *
+     * @param card card to remove
+     * @return boolean true if successfuly removed
+     */
     public boolean removeCustomerCard(CreditCard card) {
         if (this.customerCards.contains(card)) {
             return this.customerCards.remove(card);
@@ -93,10 +98,18 @@ public class Customer {
         return false;
     }
 
+    /** getCustomerCards return collection of cards for this customer
+     *
+     * @return ArrayList of CreditCards owned by this customer
+     */
     public ArrayList<CreditCard> getCustomerCards() {
         return this.customerCards;
     }
 
+    /** printableCustomerInfo returns a String with formatted relevant data
+     *
+     * @return String printable data for this customer
+     */
     public String printableCustomerInfo() {
         String info = "Customer Id:\t" + id + "\nName:\t\t" + name + "\nSSN:\t\t"
                 + ssn + "\nAddress:\t" + address + "\nPhone:\t\t" + phone;

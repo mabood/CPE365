@@ -1,5 +1,4 @@
 import java.math.BigDecimal;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,13 +6,12 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.SortedMap;
 
-/**
- * @Author Mike G. Abood
+/** Main - CustomerCreditCard model for Customers, CreditCards, Transactions, and Payments
+ * @author Mike G. Abood
  * CPE 365 Winter 17
  */
 
 /*
-
 Your program should support the following updates. Identify object by their IDs.
 1.	Create a new customer.
 2.	Create a new credit card for an existing customer (will affect both the credit card and ownership data). Initially, the credit card will not be active.
@@ -29,11 +27,11 @@ Your program should support the following queries.
 2.	For a given customer (specified ID or SSN), print credit card information (i.e., credit card number, credit limit, and balance for each credit card).
 3.	For a given credit card (specified by CC number), print credit card information (e.g., balance, credit limit, card holders).
 4.	For a given credit card, print all transactions that are in a specified date range.
-
  */
+
 public class Main {
     private static boolean exit;
-    static Scanner scan = new Scanner(System.in);
+    private static Scanner scan = new Scanner(System.in);
     private static CustomerCollection customers = new CustomerCollection();
     private static CreditCardCollection cards = new CreditCardCollection();
     private static VendorCollection vendors = new VendorCollection();
@@ -88,7 +86,7 @@ public class Main {
 
     }
 
-    public static void printMainMenu() {
+    private static void printMainMenu() {
         String menu = "\n============================================================\n";
         menu += "Credit Bank 1.0 | Main Menu\n";
         menu += "============================================================\n";
@@ -106,7 +104,7 @@ public class Main {
         System.out.print(menu);
     }
 
-    public static void printNewCustomerMenu() {
+    private static void printNewCustomerMenu() {
         String menu = "\n============================================================\n";
         menu += "Credit Bank 1.0 | Create a Customer\n";
         menu += "============================================================\n";
@@ -161,7 +159,7 @@ public class Main {
         System.out.println(result);
     }
 
-    public static void printNewCreditCardMenu() {
+    private static void printNewCreditCardMenu() {
         String menu = "\n============================================================\n";
         menu += "Credit Bank 1.0 | Create a new Credit Card\n";
         menu += "============================================================\n";
@@ -223,7 +221,7 @@ public class Main {
         System.out.println(result);
     }
 
-    public static void printDuplicateCardMenu() {
+    private static void printDuplicateCardMenu() {
         String menu = "\n============================================================\n";
         menu += "Credit Bank 1.0 | Issue a Duplicate Credit Card\n";
         menu += "============================================================\n";
@@ -251,7 +249,7 @@ public class Main {
 
     }
 
-    public static void printCancelCardMenu() {
+    private static void printCancelCardMenu() {
         String menu = "\n============================================================\n";
         menu += "Credit Bank 1.0 | Cancel a Credit Card\n";
         menu += "============================================================\n";
@@ -265,7 +263,7 @@ public class Main {
         System.out.println("Card: " + card.getCardNumber() + " CANCELED.");
     }
 
-    public static void printActivateCardMenu() {
+    private static void printActivateCardMenu() {
         String menu = "\n============================================================\n";
         menu += "Credit Bank 1.0 | Activate a Credit Card\n";
         menu += "============================================================\n";
@@ -279,7 +277,7 @@ public class Main {
         System.out.println("Card: " + card.getCardNumber() + " ACTIVATED.");
     }
 
-    public static void printNewVendorMenu() {
+    private static void printNewVendorMenu() {
         String menu = "\n============================================================\n";
         menu += "Credit Bank 1.0 | Add a New Vendor\n";
         menu += "============================================================\n";
@@ -308,7 +306,7 @@ public class Main {
         System.out.println(result);
     }
 
-    public static void printCreateTransactionMenu() {
+    private static void printCreateTransactionMenu() {
         String menu = "\n============================================================\n";
         menu += "Credit Bank 1.0 | Create a New Transaction\n";
         menu += "============================================================\n";
@@ -365,7 +363,7 @@ public class Main {
 
     }
 
-    public static void printCreatePaymentMenu() {
+    private static void printCreatePaymentMenu() {
         String menu = "\n============================================================\n";
         menu += "Credit Bank 1.0 | Make a Credit Card Payment\n";
         menu += "============================================================\n";
@@ -407,7 +405,7 @@ public class Main {
         }
     }
 
-    public static void printQueryMenu() {
+    private static void printQueryMenu() {
         String menu = "\n============================================================\n";
         menu += "Credit Bank 1.0 | Make a Query\n";
         menu += "============================================================\n";
@@ -550,7 +548,7 @@ public class Main {
 
     }
 
-    public static void printExit() {
+    private static void printExit() {
         String menu = "\n============================================================\n";
         menu += "Exiting...\nThank you for banking with Credit Bank 1.0!\n";
         menu += "============================================================\n";
@@ -558,7 +556,12 @@ public class Main {
         exit = true;
     }
 
-    public static Customer locateCustomerById(String loopMessage) {
+    /** locateCustomerById used to locate customer by SSN
+     *
+     * @param loopMessage message to be displayed to user in loop
+     * @return Customer object located.
+     */
+    private static Customer locateCustomerById(String loopMessage) {
         String input;
         int id = -1;
         Customer customer;
@@ -579,7 +582,12 @@ public class Main {
         return customer;
     }
 
-    public static Customer locateCustomerBySSN(String loopMessage) {
+    /** locateCustomerBySSN used to locate customer by SSN
+     *
+     * @param loopMessage message to be displayed to user in loop
+     * @return Customer object located.
+     */
+    private static Customer locateCustomerBySSN(String loopMessage) {
         String input;
         long ssn = 0;
         Customer customer;
@@ -600,7 +608,12 @@ public class Main {
         return customer;
     }
 
-    public static CreditCard locateCreditCardByNumber(String loopMessage) {
+    /** locateCreditCardByNumber used to match number to CreditCard object
+     *
+     * @param loopMessage message to be displayed to user in loop
+     * @return CreditCard object located.
+     */
+    private static CreditCard locateCreditCardByNumber(String loopMessage) {
         String input;
         CreditCard card;
         while(true) {
