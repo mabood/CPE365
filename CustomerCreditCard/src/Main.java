@@ -257,9 +257,12 @@ public class Main {
 
         String input;
         CreditCard card;
+        Customer customer;
 
+        customer = locateCustomerBySSN("Enter the customer whose card to cancel: ");
+        System.out.println("Customer: " + customer.getName() + " selected.");
         card = locateCreditCardByNumber("Enter the 16-digit card number to CANCEL: ");
-        card.changeCardActiveStatus(false);
+        card.removeCardHolder(customer);
         System.out.println("Card: " + card.getCardNumber() + " CANCELED.");
     }
 

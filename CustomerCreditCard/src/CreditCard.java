@@ -100,7 +100,7 @@ public class CreditCard {
             if (cardHolders.isEmpty()) {
                 this.changeCardActiveStatus(false);
             }
-            customer.removeCustomerCard(this);
+            customer.cancelCustomerCard(this);
             return customer;
         }
         else {

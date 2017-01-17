@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /** Customer class
  *
@@ -17,7 +19,7 @@ public class Customer {
     private String name;
     private String address;
     private long phone;
-    private ArrayList<CreditCard> customerCards;
+    private Map<CreditCard, Boolean> customerCards;
 
     /** Customer constructor
      *
@@ -33,7 +35,7 @@ public class Customer {
         this.phone = phone;
         this.id = idCounter;
         idCounter++;
-        this.customerCards = new ArrayList<>();
+        this.customerCards = new HashMap<CreditCard, Boolean>();
     }
 
     /** getCustomerId return unique ID for Customer
@@ -81,21 +83,17 @@ public class Customer {
      * @param card card to add
      */
     public void addCustomerCard(CreditCard card) {
-        if (!this.customerCards.contains(card)) {
-            this.customerCards.add(card);
-        }
+        this.customerCards.put(card, Boolean.TRUE);
     }
 
-    /** removeCustomerCard remove card from this customer
+    /** cancelCustomerCard cancels card from this customer
      *
      * @param card card to remove
-     * @return boolean true if successfuly removed
      */
-    public boolean removeCustomerCard(CreditCard card) {
-        if (this.customerCards.contains(card)) {
-            return this.customerCards.remove(card);
+    public void cancelCustomerCard(CreditCard card) {
+        if (this.customerCards.containsKey(card)) {
+            this.customerCards.put(card, Boolean.FALSE);
         }
-        return false;
     }
 
     /** getCustomerCards return collection of cards for this customer
@@ -103,7 +101,7 @@ public class Customer {
      * @return ArrayList of CreditCards owned by this customer
      */
     public ArrayList<CreditCard> getCustomerCards() {
-        return this.customerCards;
+        return new ArrayList<>(this.customerCards.keySet());
     }
 
     /** printableCustomerInfo returns a String with formatted relevant data
